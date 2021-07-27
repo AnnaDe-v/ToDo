@@ -1,0 +1,20 @@
+.App {
+  padding: 30px;
+  display: flex;
+}
+
+.App > div {
+  margin-right: 50px;
+}
+.btn-active {
+  background-color: #f1c1ff;
+  color: darkblue;
+}
+.error {
+  border: 2px solid red;
+  outline: transparent;
+}
+.error-text {
+  color: red;
+  font-size: 1000px;
+}
