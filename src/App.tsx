@@ -76,6 +76,7 @@ function App() {
 
     function addToDoList() {
         debugger
+        console.log('warning')
     }
     return (
         <div className="App">
