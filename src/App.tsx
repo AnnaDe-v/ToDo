@@ -44,9 +44,12 @@ function App() {
     }
 
     function addTask(todolistsID: string, title: string) {
-        // let task = {id: v1(), title: title, isDone: false};
-        // let newTasks = [task, ...tasks];
-        // setTasks(newTasks);
+        const newTask = {id: v1(),
+            title: title,
+            isDone: false
+        };
+        tasks[todolistsID] = [newTask, ...tasks[todolistsID]];
+        setTasks({...tasks});
     }
 
     function changeStatus(todolistsID: string, taskId: string, isDone: boolean) {
@@ -74,10 +77,16 @@ function App() {
         setTasks(copy)
     }
 
-    function addToDoList() {
-        debugger
-        console.log('warning')
+    function addToDoList(title: string) {
+        let newToDoList: todolistsType = {
+            id: v1(),
+            title: title,
+            filter: "all"
+        }
+        setTodolists([...todolists, newToDoList])
+        setTasks({...tasks, [newToDoList.id]: []})
     }
+
     return (
         <div className="App">
             {todolists.map((tdM) => {
