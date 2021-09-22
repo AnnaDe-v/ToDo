@@ -1,3 +1,4 @@
+/*
 .App {
   padding: 30px;
   display: flex;
@@ -6,15 +7,20 @@
 .App > div {
   margin-right: 50px;
 }
-.btn-active {
-  background-color: #f1c1ff;
-  color: darkblue;
-}
+
 .error {
-  border: 2px solid red;
-  outline: transparent;
+  border: red 1px solid;
 }
-.error-text {
+
+.error-message {
   color: red;
-  font-size: 1000px;
 }
+
+.active-filter {
+  background-color: aquamarine;
+}
+
+.is-done {
+  opacity: 0.5;
+}
+*/
