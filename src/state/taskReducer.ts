@@ -47,7 +47,6 @@ export const taskReducer = (state: TasksStateType = initialState, action: mainTy
                 task.title = action.title
             }
             return stateCopy
-            // return state.map(t => t.id === action.id ? {...t, title: action.title} : t)
         }
         default:
             return state
