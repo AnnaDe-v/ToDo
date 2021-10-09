@@ -76,7 +76,6 @@ test('correct todolist should be added', () => {
 
 
 
-    // @ts-ignore
      const endState = todolistReducer(startState, changeTodolistFilterAC(todolistId2, newFilter));
 
     expect(endState[0].filter).toBe("all");
