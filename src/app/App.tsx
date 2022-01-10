@@ -46,7 +46,7 @@ function App({ demo = false }: PropsType) {
             <Route path="/ToDo/" element={<TodolistsList demo={demo} />} />
             <Route path="ToDo/login" element={<Login />} />
             <Route
-              path="404"
+              path="ToDo/404"
               element={
                 <h1 style={{ textAlign: "center" }}>404: page not founded</h1>
               }
