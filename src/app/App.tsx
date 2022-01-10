@@ -35,7 +35,7 @@ function App({ demo = false }: PropsType) {
             </IconButton>
             <Typography variant="h6">News</Typography>
             <Button color="inherit">
-              <a href="/login">Login</a>
+              <a href="/ToDo/login">Login</a>
             </Button>
           </Toolbar>
           {status === "loading" && <LinearProgress />}
@@ -43,8 +43,8 @@ function App({ demo = false }: PropsType) {
 
         <Container fixed>
           <Routes>
-            <Route path="/" element={<TodolistsList demo={demo} />} />
-            <Route path="login" element={<Login />} />
+            <Route path="/ToDo/" element={<TodolistsList demo={demo} />} />
+            <Route path="ToDo/login" element={<Login />} />
             <Route
               path="404"
               element={
