@@ -51,7 +51,7 @@ function App({ demo = false }: PropsType) {
                 <h1 style={{ textAlign: "center" }}>404: page not founded</h1>
               }
             />
-            <Route path="/ToDo/*" element={<Navigate to={"404"} />} />
+            <Route path="/ToDo/*" element={<Navigate to={"/ToDo/404"} />} />
           </Routes>
         </Container>
       </div>

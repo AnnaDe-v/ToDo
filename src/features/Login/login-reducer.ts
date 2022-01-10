@@ -7,7 +7,9 @@ import {
 } from "../../app/app-reducer";
 // import { handleServerAppError } from "../../utils/error-utils"
 
-const initialState: InitialStateType = {};
+const initialState: InitialStateType = {
+  isLoggedIn: false
+};
 
 export const loginReducer = (
   state: InitialStateType = initialState,
@@ -30,6 +32,7 @@ export const loginTC =
     authAPI.login(data).then((res) => {
       if (res.data.resultCode === 0) {
         alert("YO");
+        dispatch(setIsLoggedInAC(true))
         dispatch(setAppStatusAC("succeeded"));
       } else {
         alert("NO");
@@ -46,4 +49,6 @@ type ActionsType =
   | SetAppStatusActionType
   | SetAppErrorActionType;
 
-type InitialStateType = {};
+type InitialStateType = {
+  isLoggedIn: boolean
+};
