@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ToDo.git/static/css/main.72828aef.chunk.css",
-    "main.js": "/ToDo.git/static/js/main.f504b84e.chunk.js",
-    "main.js.map": "/ToDo.git/static/js/main.f504b84e.chunk.js.map",
+    "main.js": "/ToDo.git/static/js/main.d6e5ebe1.chunk.js",
+    "main.js.map": "/ToDo.git/static/js/main.d6e5ebe1.chunk.js.map",
     "runtime-main.js": "/ToDo.git/static/js/runtime-main.31f5b92e.js",
     "runtime-main.js.map": "/ToDo.git/static/js/runtime-main.31f5b92e.js.map",
     "static/js/2.e73db9c9.chunk.js": "/ToDo.git/static/js/2.e73db9c9.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.31f5b92e.js",
     "static/js/2.e73db9c9.chunk.js",
     "static/css/main.72828aef.chunk.css",
-    "static/js/main.f504b84e.chunk.js"
+    "static/js/main.d6e5ebe1.chunk.js"
   ]
 }
