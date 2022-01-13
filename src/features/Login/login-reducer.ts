@@ -1,20 +1,17 @@
-import { Dispatch } from "react";
+import { Dispatch } from "redux";
 import { authAPI, LoginParamsType } from "../../api/todolists-api";
 import {
   SetAppErrorActionType,
   setAppStatusAC,
   SetAppStatusActionType,
 } from "../../app/app-reducer";
-// import { handleServerAppError } from "../../utils/error-utils"
+import { handleServerAppError, handleServerNetworkError } from "../../utils/error-utils";
 
 const initialState: InitialStateType = {
-  isLoggedIn: false
+  isLoggedIn: false,
 };
 
-export const loginReducer = (
-  state: InitialStateType = initialState,
-  action: ActionsType
-): InitialStateType => {
+export const loginReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
   switch (action.type) {
     case "login/SET-IS-LOGGED-IN":
       return { ...state, isLoggedIn: action.value };
@@ -25,20 +22,21 @@ export const loginReducer = (
 
 // thunks
 
-export const loginTC =
-  (data: LoginParamsType) =>
-  (dispatch: Dispatch<ActionsType | SetAppStatusActionType>) => {
+export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsType>) => {
     dispatch(setAppStatusAC("loading"));
-    authAPI.login(data).then((res) => {
-      if (res.data.resultCode === 0) {
-        alert("YO");
-        dispatch(setIsLoggedInAC(true))
-        dispatch(setAppStatusAC("succeeded"));
-      } else {
-        alert("NO");
-        dispatch(setAppStatusAC("succeeded"));
-      }
-    });
+    authAPI
+      .login(data)
+      .then((res) => {
+        if (res.data.resultCode === 0) {
+          dispatch(setIsLoggedInAC(true));
+          dispatch(setAppStatusAC("succeeded"));
+        } else {
+          handleServerAppError(res.data, dispatch);
+        }
+      })
+      .catch( (error) => {
+        handleServerNetworkError(error, dispatch);
+      });
   };
 
 export const setIsLoggedInAC = (value: boolean) =>
@@ -47,8 +45,8 @@ export const setIsLoggedInAC = (value: boolean) =>
 type ActionsType =
   | ReturnType<typeof setIsLoggedInAC>
   | SetAppStatusActionType
-  | SetAppErrorActionType;
+  | SetAppErrorActionType
 
 type InitialStateType = {
-  isLoggedIn: boolean
+  isLoggedIn: boolean;
 };

@@ -7,8 +7,10 @@ import { Delete } from '@mui/icons-material';
 import { Task } from './Task/Task'
 import { TaskStatuses, TaskType } from '../../../api/todolists-api'
 import { FilterValuesType, TodolistDomainType } from '../todolists-reducer'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchTasksTC } from '../tasks-reducer'
+import { AppRootStateType } from '../../../app/store';
+import { Navigate } from 'react-router-dom';
 
 type PropsType = {
     todolist: TodolistDomainType
@@ -24,15 +26,16 @@ type PropsType = {
 }
 
 export const Todolist = React.memo(function ({demo = false, ...props}: PropsType) {
-    console.log('Todolist called')
+
+    const isLoggedIn = useSelector<AppRootStateType, boolean>((state) => state.auth.isLoggedIn)
+
 
     const dispatch = useDispatch()
     useEffect(() => {
-        if (demo) {
-            return
+        if (demo || !isLoggedIn) {
+            return;
         }
-        const thunk = fetchTasksTC(props.todolist.id)
-        dispatch(thunk)
+        dispatch(fetchTasksTC(props.todolist.id))
     }, [])
 
     const addTask = useCallback((title: string) => {
@@ -59,6 +62,14 @@ export const Todolist = React.memo(function ({demo = false, ...props}: PropsType
     if (props.todolist.filter === 'completed') {
         tasksForTodolist = props.tasks.filter(t => t.status === TaskStatuses.Completed)
     }
+
+    if(!isLoggedIn) {
+        return <Navigate to={'/ToDo/login'} />
+    }
+
+
+
+
 
     return <div>
         <h3><EditableSpan value={props.todolist.title} onChange={changeTodolistTitle}/>

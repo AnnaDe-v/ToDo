@@ -33,7 +33,7 @@ function App({ demo = false }: PropsType) {
             <IconButton edge="start" color="inherit" aria-label="menu">
               <Menu />
             </IconButton>
-            <Typography variant="h6">News</Typography>
+            <Typography variant="h6"><a href="/ToDo/">TODO List</a></Typography>
             <Button color="inherit">
               <a href="/ToDo/login">Login</a>
             </Button>
