@@ -26,6 +26,8 @@ export const TodolistsList: React.FC<PropsType> = ({demo = false}) => {
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
     const dispatch = useDispatch()
 
+    console.log(todolists)
+
     useEffect(() => {
         if (demo) {
             return;
@@ -81,7 +83,7 @@ export const TodolistsList: React.FC<PropsType> = ({demo = false}) => {
         </Grid>
         <Grid container spacing={3}>
             {
-                todolists.map(tl => {
+                todolists?.map(tl => {
                     let allTodolistTasks = tasks[tl.id]
 
                     return <Grid item key={tl.id}>
